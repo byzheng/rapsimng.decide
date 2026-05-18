@@ -128,13 +128,121 @@ It coordinates how decisions are evaluated and reported.</strong></p>
 <h3 id="high-level-entry-point">High-level entry point<a class="anchor" aria-label="anchor" href="#high-level-entry-point"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu">evaluate_decision</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/evaluate_decision.html">evaluate_decision</a></span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
 <span>  decision <span class="op">=</span> <span class="st">"cultivar"</span>,</span>
 <span>  context <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,</span>
 <span>  criteria <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
+<hr>
 </div>
+</div>
+<div class="section level2">
+<h2 id="output-structure">Output Structure<a class="anchor" aria-label="anchor" href="#output-structure"></a>
+</h2>
+<p>All decisions return a consistent structure:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  meta     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,</span>
+<span>  metrics  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,</span>
+<span>  tables   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,</span>
+<span>  figures  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>This structure is designed for:</p>
+<ul>
+<li>reproducible workflows</li>
+<li>direct use in Quarto (<code>qmd</code>)</li>
+<li>downstream interpretation (e.g. <code>agrillm</code>)</li>
+</ul>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="design-principles">Design Principles<a class="anchor" aria-label="anchor" href="#design-principles"></a>
+</h2>
+<div class="section level3">
+<h3 id="id_1-separation-of-responsibilities">1. Separation of Responsibilities<a class="anchor" aria-label="anchor" href="#id_1-separation-of-responsibilities"></a>
+</h3>
+<ul>
+<li>Decision logic lives in <code>rapsimng.decide.*</code>
+</li>
+<li>This package only orchestrates and standardises outputs</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="id_2-transparency">2. Transparency<a class="anchor" aria-label="anchor" href="#id_2-transparency"></a>
+</h3>
+<ul>
+<li>All assumptions and criteria are explicit</li>
+<li>No hidden optimisation or recommendation</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="id_3-reproducibility">3. Reproducibility<a class="anchor" aria-label="anchor" href="#id_3-reproducibility"></a>
+</h3>
+<ul>
+<li>Outputs are deterministic and structured</li>
+<li>Suitable for reporting and publication</li>
+</ul>
+<hr>
+</div>
+</div>
+<div class="section level2">
+<h2 id="scope">Scope<a class="anchor" aria-label="anchor" href="#scope"></a>
+</h2>
+<ul>
+<li>APSIM <strong>Next Generation outputs only</strong>
+</li>
+<li>Input: <code>data.frame</code> / <code>tibble</code>
+</li>
+<li>No dependency on APSIM runtime</li>
+</ul>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="not-in-scope">Not in Scope<a class="anchor" aria-label="anchor" href="#not-in-scope"></a>
+</h2>
+<ul>
+<li>APSIM simulation setup or execution</li>
+<li>Domain-specific decision logic</li>
+<li>User intent interpretation</li>
+<li>Automated decision-making</li>
+</ul>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="extending-the-system">Extending the System<a class="anchor" aria-label="anchor" href="#extending-the-system"></a>
+</h2>
+<p>New decision types can be added by creating packages such as:</p>
+<ul>
+<li><code>rapsimng.decide.cultivar</code></li>
+<li><code>rapsimng.decide.experiment</code></li>
+</ul>
+<p>Each package:</p>
+<ul>
+<li>implements its own metrics, tables, and figures</li>
+<li>returns a standard decision report object</li>
+</ul>
+<p><code>rapsimng.decide</code> will automatically integrate them through its interface.</p>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="key-insight">Key Insight<a class="anchor" aria-label="anchor" href="#key-insight"></a>
+</h2>
+<blockquote>
+<p>This package provides a <strong>decision framework</strong>,<br>
+not decision answers.</p>
+</blockquote>
+<hr>
+</div>
+<div class="section level2">
+<h2 id="status">Status<a class="anchor" aria-label="anchor" href="#status"></a>
+</h2>
+<p>Early-stage infrastructure for:</p>
+<ul>
+<li>modular decision analysis</li>
+<li>scalable modelling workflows</li>
+<li>integration with AI-assisted interfaces</li>
+</ul>
 </div>
 </div>
   </div>
