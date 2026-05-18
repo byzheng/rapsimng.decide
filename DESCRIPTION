@@ -10,6 +10,8 @@ Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.1.0)
 Suggests: 
     testthat (>= 3.0.0)
+Imprts:
+    rapsimng.decide.cultivar
 Config/testthat/edition: 3
 URL: https://cultivar.decide.rapsimng.bangyou.me/,
     https://github.com/byzheng/rapsimng.decide
