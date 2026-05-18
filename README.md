@@ -14,7 +14,7 @@ The package coordinates domain-specific decision modules (e.g. cultivar suitabil
 Currently on [Github](https://github.com/byzheng/rapsimng.decide.cultivar) only. Install with:
 
 ```r
-remotes::install_github('byzheng/rapsimng.decide.cultivar')
+remotes::install_github('byzheng/rapsimng.decide')
 ```
 
 ---
