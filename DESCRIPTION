@@ -10,7 +10,9 @@ Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.1.0)
 Suggests: 
     testthat (>= 3.0.0)
-Imprts:
+Imports:
+    dplyr,
+    tibble,
     rapsimng,
     rapsimng.decide.cultivar
 Config/testthat/edition: 3
