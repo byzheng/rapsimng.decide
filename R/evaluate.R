@@ -19,7 +19,7 @@
 #' Evaluate a Decision From APSIM NG Outputs
 #'
 #' @description
-#' `evaluate_decision()` is a high-level orchestration wrapper for decision
+#' `evaluate()` is a high-level orchestration wrapper for decision
 #' workflows built on APSIM Next Generation outputs. It validates inputs,
 #' dispatches to a domain-specific decision package, and standardises the
 #' returned result into a common report structure. It does not implement the
@@ -67,7 +67,7 @@
 #' )
 #'
 #' # Example usage once a decision package is installed:
-#' # evaluate_decision(
+#' # evaluate(
 #' #   data = mock_data,
 #' #   decision = "cultivar",
 #' #   context = list(location = "Wagga Wagga"),
@@ -76,7 +76,7 @@
 #' # )
 #'
 #' @export
-evaluate_decision <- function(
+evaluate <- function(
     data,
     decision,
     context = list(),

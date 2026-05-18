@@ -66,7 +66,7 @@ It coordinates how decisions are evaluated and reported.**
 ### High-level entry point
 
 ```r
-report <- evaluate_decision(
+report <- evaluate(
   data,
   decision = "cultivar",
   context = list(...),
