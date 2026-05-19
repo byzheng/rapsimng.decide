@@ -10,6 +10,7 @@ document(
   context = list(),
   criteria = list(),
   options = list(),
+  simplify = FALSE,
   ...
 )
 }
@@ -28,6 +29,10 @@ selected decision workflow.}
 
 \item{options}{A named list of additional options that control reporting or
 documentation behaviour in the selected decision workflow.}
+
+\item{simplify}{A boolean flag indicating whether to simplify the returned
+document into a character vector of lines. If \code{FALSE}, the full structured
+document is returned.}
 
 \item{...}{Additional arguments passed through to the domain-specific
 decision documenter.}

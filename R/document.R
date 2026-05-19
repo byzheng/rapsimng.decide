@@ -38,6 +38,9 @@ NULL
 #'   selected decision workflow.
 #' @param options A named list of additional options that control reporting or
 #'   documentation behaviour in the selected decision workflow.
+#' @param simplify A boolean flag indicating whether to simplify the returned
+#'   document into a character vector of lines. If `FALSE`, the full structured
+#'   document is returned.
 #' @param ... Additional arguments passed through to the domain-specific
 #'   decision documenter.
 #'
@@ -71,6 +74,7 @@ document <- function(
     context = list(),
     criteria = list(),
     options = list(),
+    simplify = FALSE,
     ...
 ) {
 
@@ -91,5 +95,27 @@ document <- function(
         options = options,
         ...
     )
+    if (simplify) {
+        result <- .document_lines(result)
+    }
     return(result)
+}
+
+
+
+.document_lines <- function(document) {
+    res <- c()
+    if (!is.null(document$prefix)) {
+        res <- c(res, document$prefix$body, "")
+    }
+	c(
+		res,
+		unlist(lapply(document$sections, function(section) {
+			if (is.null(section)) {
+				return(NULL)
+			}
+
+			c(section$body, "")
+		}), use.names = FALSE)
+	)
 }
