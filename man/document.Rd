@@ -63,20 +63,3 @@ such as cultivar suitability assessment.
 \code{rapsimng.decide} sits between these layers and provides a consistent entry
 point and output contract for decision-oriented reporting.
 }
-\examples{
-mock_data <- data.frame(
-  SimulationName = "example",
-  Yield = 4.2,
-  stringsAsFactors = FALSE
-)
-
-# Example usage once a decision package is installed:
-# document(
-#   data = mock_data,
-#   decision = "cultivar",
-#   context = list(location = "Wagga Wagga"),
-#   criteria = list(min_yield = 3.5),
-#   options = list()
-# )
-
-}

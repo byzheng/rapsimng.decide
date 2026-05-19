@@ -4,13 +4,15 @@
 \alias{read_output}
 \title{Read APSIMX output}
 \usage{
-read_output(apsimx_file, report = "HarvestReport")
+read_output(apsimx_file, report = "HarvestReport", years = NULL)
 }
 \arguments{
 \item{apsimx_file}{The path to the APSIMX output file (.apsimx)}
 
 \item{report}{The name of the report to read from the APSIMX output (
 default: "HarvestReport")}
+
+\item{years}{Optional numeric vector of years to filter the output by (e.g., 1996:2025)}
 }
 \value{
 A data frame containing the APSIMX output data
