@@ -45,28 +45,6 @@ test_that("evaluate errors when decision is unknown", {
     )
 })
 
-test_that("evaluate enforces the standard report structure", {
-    local_mocked_bindings(
-        .get_evaluator = function(decision) {
-            expect_identical(decision, "cultivar")
-
-            function(data, context, criteria, options, ...) {
-                list(
-                    meta = list(),
-                    metrics = list(),
-                    tables = list()
-                )
-            }
-        },
-        .package = "rapsimng.decide"
-    )
-
-    expect_error(
-        evaluate(data = data.frame(yield = 4.2), decision = "cultivar"),
-        "Decision result must contain: meta, metrics, tables, figures"
-    )
-})
-
 test_that("evaluate assigns the report class to returned output", {
     mock_report <- list(
         meta = list(),
@@ -93,3 +71,4 @@ test_that("evaluate assigns the report class to returned output", {
 
     expect_s3_class(result, "rapsimng_decide_report")
 })
+

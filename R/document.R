@@ -1,15 +1,15 @@
 
-#' @importFrom rapsimng.decide.cultivar evaluate
+#' @importFrom rapsimng.decide.cultivar document
 NULL
 
-.evaluator_registry <- list(
-    cultivar = rapsimng.decide.cultivar::evaluate
+.document_registry <- list(
+    cultivar = rapsimng.decide.cultivar::document
 )
 
 
-.get_evaluator <- function(decision) {
+.get_documenter <- function(decision) {
     
-    fn <- .evaluator_registry[[decision]]
+    fn <- .document_registry[[decision]]
     
     if (is.null(fn)) {
         stop(sprintf("Unknown decision type: %s", decision))
@@ -19,10 +19,10 @@ NULL
 }
 
 
-#' Evaluate a Decision From APSIM NG Outputs
+#' Document a Decision From APSIM NG Outputs
 #'
 #' @description
-#' `evaluate()` is a high-level orchestration wrapper for decision
+#' `document()` is a high-level orchestration wrapper for decision
 #' workflows built on APSIM Next Generation outputs. It validates inputs,
 #' dispatches to a domain-specific decision package, and standardises the
 #' returned result into a common report structure. It does not implement the
@@ -37,9 +37,9 @@ NULL
 #' @param criteria A named list of decision criteria or thresholds used by the
 #'   selected decision workflow.
 #' @param options A named list of additional options that control reporting or
-#'   evaluation behaviour in the selected decision workflow.
+#'   documentation behaviour in the selected decision workflow.
 #' @param ... Additional arguments passed through to the domain-specific
-#'   decision evaluator.
+#'   decision documenter.
 #'
 #' @details
 #' This package separates responsibilities across the wider workflow:
@@ -63,23 +63,9 @@ NULL
 #' - `figures`: figure objects, specifications, or references for visual output.
 #'
 #' @examples
-#' mock_data <- data.frame(
-#'   SimulationName = "example",
-#'   Yield = 4.2,
-#'   stringsAsFactors = FALSE
-#' )
-#'
-#' # Example usage once a decision package is installed:
-#' # evaluate(
-#' #   data = mock_data,
-#' #   decision = "cultivar",
-#' #   context = list(location = "Wagga Wagga"),
-#' #   criteria = list(min_yield = 3.5),
-#' #   options = list()
-#' # )
 #'
 #' @export
-evaluate <- function(
+document <- function(
     data,
     decision,
     context = list(),
@@ -96,16 +82,14 @@ evaluate <- function(
         stop("`decision` must be a single string")
     }
 
-    evaluator <- .get_evaluator(decision)
+    documenter <- .get_documenter(decision)
 
-    result <- evaluator(
+    result <- documenter(
         data = data,
         context = context,
         criteria = criteria,
         options = options,
         ...
     )
-
-    class(result) <- "rapsimng_decide_report"
     return(result)
 }
