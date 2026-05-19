@@ -65,7 +65,6 @@ NULL
 #' - `tables`: tabular outputs ready for reporting.
 #' - `figures`: figure objects, specifications, or references for visual output.
 #'
-#' @examples
 #'
 #' @export
 document <- function(
@@ -96,26 +95,8 @@ document <- function(
         ...
     )
     if (simplify) {
-        result <- .document_lines(result)
+        result <- document_lines(result)
     }
     return(result)
 }
 
-
-
-.document_lines <- function(document) {
-    res <- c()
-    if (!is.null(document$prefix)) {
-        res <- c(res, document$prefix$body, "")
-    }
-	c(
-		res,
-		unlist(lapply(document$sections, function(section) {
-			if (is.null(section)) {
-				return(NULL)
-			}
-
-			c(section$body, "")
-		}), use.names = FALSE)
-	)
-}
