@@ -1,12 +1,15 @@
 
-.decision_registry <- list(
-    cultivar = rapsimng.decide.cultivar::evaluate_cultivar_suitability
+#' @importFrom rapsimng.decide.cultivar evaluate_cultivar_suitability
+NULL
+
+.evaluator_registry <- list(
+    cultivar = evaluate_cultivar_suitability
 )
 
 
-.get_decision_evaluator <- function(decision) {
+.get_evaluator <- function(decision) {
     
-    fn <- .decision_registry[[decision]]
+    fn <- .evaluator_registry[[decision]]
     
     if (is.null(fn)) {
         stop(sprintf("Unknown decision type: %s", decision))
@@ -93,7 +96,7 @@ evaluate <- function(
         stop("`decision` must be a single string")
     }
 
-    evaluator <- .get_decision_evaluator(decision)
+    evaluator <- .get_evaluator(decision)
 
     result <- evaluator(
         data = data,

@@ -7,7 +7,7 @@ test_that("evaluate returns a report for valid minimal input", {
     )
 
     local_mocked_bindings(
-        .get_decision_evaluator = function(decision) {
+        .get_evaluator = function(decision) {
             expect_identical(decision, "cultivar")
 
             function(data, context, criteria, options, ...) {
@@ -47,7 +47,7 @@ test_that("evaluate errors when decision is unknown", {
 
 test_that("evaluate enforces the standard report structure", {
     local_mocked_bindings(
-        .get_decision_evaluator = function(decision) {
+        .get_evaluator = function(decision) {
             expect_identical(decision, "cultivar")
 
             function(data, context, criteria, options, ...) {
@@ -76,7 +76,7 @@ test_that("evaluate assigns the report class to returned output", {
     )
 
     local_mocked_bindings(
-        .get_decision_evaluator = function(decision) {
+        .get_evaluator = function(decision) {
             expect_identical(decision, "cultivar")
 
             function(data, context, criteria, options, ...) {
