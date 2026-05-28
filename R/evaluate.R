@@ -1,6 +1,7 @@
 .evaluator_registry <- list(
     cultivar = rapsimng.decide.cultivar::evaluate,
-    sowing = rapsimng.decide.sowing::evaluate
+    sowing = rapsimng.decide.sowing::evaluate,
+    nitrogen = rapsimng.decide.nitrogen::evaluate
 )
 
 

@@ -2,7 +2,8 @@
 
 .document_registry <- list(
     cultivar = rapsimng.decide.cultivar::document,
-    sowing = rapsimng.decide.sowing::document
+    sowing = rapsimng.decide.sowing::document,
+    nitrogen = rapsimng.decide.nitrogen::document
 )
 
 
