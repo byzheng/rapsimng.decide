@@ -1,9 +1,8 @@
 
-#' @importFrom rapsimng.decide.cultivar document
-NULL
 
 .document_registry <- list(
-    cultivar = rapsimng.decide.cultivar::document
+    cultivar = rapsimng.decide.cultivar::document,
+    sowing = rapsimng.decide.sowing::document
 )
 
 

@@ -16,7 +16,8 @@ Imports:
     rapsimng,
     rlang,
     rapsimng.decide.core,
-    rapsimng.decide.cultivar
+    rapsimng.decide.cultivar,
+    rapsimng.decide.sowing
 Config/testthat/edition: 3
 URL: https://decide.rapsimng.bangyou.me/,
     https://github.com/byzheng/rapsimng.decide

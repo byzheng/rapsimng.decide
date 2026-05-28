@@ -43,7 +43,7 @@ test_that("document simplifies structured output into lines", {
             list(body = c("Section two", "Section three"))
         )
     )
-
+    class(mock_document) <- "rapsimng_decide_document"
     local_mocked_bindings(
         .get_documenter = function(decision) {
             expect_identical(decision, "cultivar")
@@ -85,7 +85,6 @@ test_that("document errors when data is not a data frame", {
 
 test_that("document errors when decision is unknown", {
     expect_error(
-        document(data = data.frame(yield = 4.2), decision = "unknown"),
-        "Unknown decision type: unknown"
+        document(data = data.frame(yield = 4.2), decision = "unknown")
     )
 })

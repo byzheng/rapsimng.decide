@@ -1,9 +1,6 @@
-
-#' @importFrom rapsimng.decide.cultivar evaluate
-NULL
-
 .evaluator_registry <- list(
-    cultivar = rapsimng.decide.cultivar::evaluate
+    cultivar = rapsimng.decide.cultivar::evaluate,
+    sowing = rapsimng.decide.sowing::evaluate
 )
 
 
