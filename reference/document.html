@@ -132,6 +132,46 @@ such as cultivar suitability assessment.</p></li>
 point and output contract for decision-oriented reporting.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">example_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  Cultivar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  Year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2020</span>, <span class="fl">2021</span>, <span class="fl">2020</span>, <span class="fl">2021</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  SowingDOY <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">120</span>, <span class="fl">120</span>, <span class="fl">125</span>, <span class="fl">125</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  Flowering <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">201</span>, <span class="fl">202</span>, <span class="fl">203</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  Yield <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4000</span>, <span class="fl">4200</span>, <span class="fl">3800</span>, <span class="fl">3900</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  FrostReduction <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>  HeatReduction <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>  FrostEvent <span class="op">=</span> <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>  HeatEvent <span class="op">=</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">decision_context</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  cultivar_col <span class="op">=</span> <span class="st">"Cultivar"</span>,</span></span>
+<span class="r-in"><span>  year_col <span class="op">=</span> <span class="st">"Year"</span>,</span></span>
+<span class="r-in"><span>  sowing_col <span class="op">=</span> <span class="st">"SowingDOY"</span>,</span></span>
+<span class="r-in"><span>  flower_col <span class="op">=</span> <span class="st">"Flowering"</span>,</span></span>
+<span class="r-in"><span>  yield_col <span class="op">=</span> <span class="st">"Yield"</span>,</span></span>
+<span class="r-in"><span>  frost_reduction_col <span class="op">=</span> <span class="st">"FrostReduction"</span>,</span></span>
+<span class="r-in"><span>  heat_reduction_col <span class="op">=</span> <span class="st">"HeatReduction"</span>,</span></span>
+<span class="r-in"><span>  frost_event_col <span class="op">=</span> <span class="st">"FrostEvent"</span>,</span></span>
+<span class="r-in"><span>  heat_event_col <span class="op">=</span> <span class="st">"HeatEvent"</span></span></span>
+<span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu">document</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">example_data</span>,</span></span>
+<span class="r-in"><span>  decision <span class="op">=</span> <span class="st">"cultivar"</span>,</span></span>
+<span class="r-in"><span>  context <span class="op">=</span> <span class="va">decision_context</span>,</span></span>
+<span class="r-in"><span>  simplify <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">report</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "---"                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "title: \"Cultivar Suitability Report\""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "format: html"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "execute:"                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "  echo: false"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [6] "  eval: true"                          </span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
