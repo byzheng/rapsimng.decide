@@ -20,3 +20,11 @@ A data frame containing the APSIMX output data
 \description{
 Read APSIMX output
 }
+\examples{
+apsimx_file <- system.file(
+  "example", "cultivar.apsimx",
+  package = "rapsimng.decide"
+)
+output <- read_output(apsimx_file, years = 2010:2011)
+head(output)
+}

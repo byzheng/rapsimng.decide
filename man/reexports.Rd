@@ -6,6 +6,21 @@
 \alias{document_lines}
 \alias{write_document}
 \title{Objects exported from other packages}
+\examples{
+example_document <- structure(
+  list(prefix = list(body = "Example report"), sections = list()),
+  class = "rapsimng_decide_document"
+)
+document_lines(example_document)
+example_document <- structure(
+  list(prefix = list(body = "Example report"), sections = list()),
+  class = "rapsimng_decide_document"
+)
+path <- tempfile()
+write_document(example_document, path)
+readLines(path)
+unlink(path)
+}
 \keyword{internal}
 \description{
 These objects are imported from other packages. Follow the links

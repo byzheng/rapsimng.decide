@@ -7,6 +7,13 @@
 #' @param years Optional numeric vector of years to filter the output by (e.g., 1996:2025)
 #' 
 #' @return A data frame containing the APSIMX output data
+#' @examples
+#' apsimx_file <- system.file(
+#'   "example", "cultivar.apsimx",
+#'   package = "rapsimng.decide"
+#' )
+#' output <- read_output(apsimx_file, years = 2010:2011)
+#' head(output)
 #' @export
 read_output <- function(
     apsimx_file, 
@@ -42,4 +49,3 @@ read_output <- function(
     }
     df
 }
-

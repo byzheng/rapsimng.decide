@@ -65,6 +65,36 @@
 #' - `tables`: tabular outputs ready for reporting.
 #' - `figures`: figure objects, specifications, or references for visual output.
 #'
+#' @examples
+#' example_data <- data.frame(
+#'   Cultivar = c("A", "A", "B", "B"),
+#'   Year = c(2020, 2021, 2020, 2021),
+#'   SowingDOY = c(120, 120, 125, 125),
+#'   Flowering = c(200, 201, 202, 203),
+#'   Yield = c(4000, 4200, 3800, 3900),
+#'   FrostReduction = 0,
+#'   HeatReduction = 0,
+#'   FrostEvent = 0,
+#'   HeatEvent = 0
+#' )
+#' decision_context <- list(vars = list(
+#'   cultivar_col = "Cultivar",
+#'   year_col = "Year",
+#'   sowing_col = "SowingDOY",
+#'   flower_col = "Flowering",
+#'   yield_col = "Yield",
+#'   frost_reduction_col = "FrostReduction",
+#'   heat_reduction_col = "HeatReduction",
+#'   frost_event_col = "FrostEvent",
+#'   heat_event_col = "HeatEvent"
+#' ))
+#' report <- document(
+#'   data = example_data,
+#'   decision = "cultivar",
+#'   context = decision_context,
+#'   simplify = TRUE
+#' )
+#' head(report)
 #'
 #' @export
 document <- function(
@@ -99,4 +129,3 @@ document <- function(
     }
     return(result)
 }
-
