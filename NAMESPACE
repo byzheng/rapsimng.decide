@@ -7,6 +7,7 @@ export(read_output)
 export(write_document)
 importFrom(rapsimng.decide.core,
   document_lines,
+  read_output,
   write_document
 )
 importFrom(rlang,.data)

@@ -5,6 +5,7 @@
 \alias{reexports}
 \alias{document_lines}
 \alias{write_document}
+\alias{read_output}
 \title{Objects exported from other packages}
 \examples{
 example_document <- structure(
@@ -27,6 +28,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{rapsimng.decide.core}{\code{\link[rapsimng.decide.core:document_lines]{document_lines()}}, \code{\link[rapsimng.decide.core:write_document]{write_document()}}}
+  \item{rapsimng.decide.core}{\code{\link[rapsimng.decide.core:document_lines]{document_lines()}}, \code{\link[rapsimng.decide.core:read_output]{read_output()}}, \code{\link[rapsimng.decide.core:write_document]{write_document()}}}
 }}
 

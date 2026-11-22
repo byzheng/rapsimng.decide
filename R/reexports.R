@@ -20,3 +20,8 @@ rapsimng.decide.core::document_lines
 #' readLines(path)
 #' unlink(path)
 rapsimng.decide.core::write_document
+
+
+#' @importFrom rapsimng.decide.core  read_output
+#' @export
+rapsimng.decide.core::read_output
